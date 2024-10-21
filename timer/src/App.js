@@ -19,26 +19,28 @@ function App() {
   },[running]);
 
   return (
-    <div className="App">
+    <div className="flex flex-col justify-center items-center min-h-screen">
       <h1>Stop watch</h1>
+      
       <div>
       <span>{("0"+Math.floor((time/6000)%60)).slice(-2)}:</span> {/* divide by 6000 bcz of milliseconds */}
       <span>{("0"+Math.floor((time/1000)%60)).slice(-2)}:</span>
       <span>{("0"+Math.floor((time/10)%100)).slice(-2)}</span>
       </div>
 
-      <div className=''>
+      <div className="">
         {/* <button onClick={()=>{setRunning(true)}}>Start</button>
         <button onClick={()=>{setRunning(false)}}>Stop</button> */}
         
         {running ? (
-            <button onClick={()=>{setRunning(false)}}>Stop</button>
+            <button className="px-4 border border-black-100 bg-blue-500 hover:opacity-50" onClick={()=>{setRunning(false)}}>Stop</button>
         ):(
-          <button onClick={()=>{setRunning(true)}}>Start</button>
+          <button className="px-4 border border-black-100 bg-blue-500 hover:opacity-50 "  onClick={()=>{setRunning(true)}}>Start</button>
           )
         }
-        <button onClick={()=>{setTimer(0)}}>Reset</button>
+        <button className="px-5 border border-black-100 bg-blue-500 hover:opacity-50" onClick={()=>{setTimer(0)}}>Reset</button>
       </div>
+
     </div>
   );
 }
