@@ -1,8 +1,10 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 import AddTask from './components/AddTask';
+import ToDo from './components/ToDo';
 
-function App() {
+function App() {~
+  const [taskList , setTaskList] = useState([]);
   return (
     <div className="app">
       <>
@@ -10,9 +12,16 @@ function App() {
         <p className="text-xl pl-6">Hi There</p>
         <div className="flex flex-row items-center">
           <p className="text-xl pl-6">Click</p>
-          <AddTask/>
+          <AddTask taskList={taskList} setTaskList={setTaskList} />
           <p className="text-xl">to add new button</p>
         </div>
+
+        {taskList.map((task,i) =>
+        <>
+        <ToDo key={i} task={task}/>
+        </>
+        )}
+
       </>
     </div>
   );
