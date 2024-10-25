@@ -9,7 +9,7 @@ const ToDo = ({task , index , taskList, setTaskList})=>{
 
                     <div className="mt-4 flex">
                         <Edit task={task} taskList={taskList} index={index} setTaskList= {setTaskList} />
-                        <Delete />
+                        <Delete  taskList={taskList} setTaskList={setTaskList} index={index}/>
                     </div>
 
             </div>
