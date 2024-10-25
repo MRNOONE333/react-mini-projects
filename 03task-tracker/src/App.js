@@ -3,7 +3,7 @@ import './App.css';
 import AddTask from './components/AddTask';
 import ToDo from './components/ToDo';
 
-function App() {~
+function App() {
   const [taskList , setTaskList] = useState([]);
   return (
     <div className="app">
@@ -15,10 +15,10 @@ function App() {~
           <AddTask taskList={taskList} setTaskList={setTaskList} />
           <p className="text-xl">to add new button</p>
         </div>
-
+        <h2 className='font-bold text-2xl mx-6 mt-3 w-max bg-gray-300'>  To Do:</h2>
         {taskList.map((task,i) =>
         <>
-        <ToDo key={i} task={task}/>
+        <ToDo key={i} task={task} index={i} taskList={taskList} setTaskList={setTaskList} />
         </>
         )}
 
