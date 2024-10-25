@@ -10,7 +10,7 @@ const Edit= ({ task , index , taskList, setTaskList}) => {
     useEffect(()=>{
         setProjectName(task.projectName);
         setTaskDescription(task.taskDescription);
-    },);
+    },[task, editModel]);
 
     const handleInput = (e) => {
         const { name, value } = e.target;
