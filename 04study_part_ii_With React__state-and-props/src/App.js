@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ChangeName from "./ChangeName";
 function App() {
   const [username,setUsername] = useState("");
   const handleInput= e=>{
@@ -6,10 +7,14 @@ function App() {
   }
   return (
     <>
-    <h1></h1>
     <label for="username">Enter your name: </label>    
     <input id="username" type="text" placeholder="my name" onChange={handleInput}></input>
-    <p>Hi there {username} </p>
+    <p>Hi there {username} hope you are doing great</p>
+    {/* <ChangeName property = {newUsername=>setUsername(newUsername)}/> */}
+      {/* or */}
+    {/* <ChangeName property = {Username=>setUsername(Username)}/> */}
+
+    <ChangeName username={username} setUsername={setUsername}/>
     </>
   );
 }
