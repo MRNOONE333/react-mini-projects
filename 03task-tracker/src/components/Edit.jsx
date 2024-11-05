@@ -39,7 +39,7 @@ const Edit= ({ task , index , taskList, setTaskList}) => {
         <>
         <button
             onClick={()=>setEditModel(true)}
-            className="bg-blue-500 text-white px-4 py-2 mr-2 rounded hover:bg-blue-600"
+            className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 mr-2 rounded "
         >
             Edit
         </button>
