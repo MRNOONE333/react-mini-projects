@@ -4,21 +4,33 @@ const AddTask = ({ taskList, setTaskList }) => {
     const [addModel, setAddModel] = useState(false);
     const [projectName, setProjectName] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
+    const [errorMessage,setErrorMessage ] = useState("");
 
     const handleInput = (e) => {
         const { name, value } = e.target;
 
         // Correct condition to update respective state
-        if (name === "projectName") setProjectName(value);
+        if (name === "projectName") {
+            setProjectName(value)
+        };
         if (name === "taskDescription") setTaskDescription(value);
     };
 
     const handleAdd = (e) => {
         e.preventDefault();
+        //error handeling to make all fields required filled.
+        if (!projectName){
+            setErrorMessage("Enter project name to --continue")
+        }
+        else if(!taskDescription){
+            setErrorMessage("Enter task description  to --continue")
+        }
+        else{
         setTaskList([...taskList, { projectName, taskDescription }]);
         setAddModel(false); // -- Close the modal after adding
         setProjectName("");   // --  Clear the input fields
         setTaskDescription("");
+        }
     };
 
     return (
@@ -66,6 +78,7 @@ const AddTask = ({ taskList, setTaskList }) => {
                                         placeholder="Project name"
                                         required
                                     />
+                                    <p className="text-red-500 text-center mt-2 ">{errorMessage}</p>
                                 </div>
 
                                 <div>
