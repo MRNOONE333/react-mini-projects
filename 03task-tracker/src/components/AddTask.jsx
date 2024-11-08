@@ -26,11 +26,25 @@ const AddTask = ({ taskList, setTaskList }) => {
             setErrorMessage("Enter task description  to --continue")
         }
         else{
-        setTaskList([...taskList, { projectName, taskDescription }]);
+        let timeStamp= new Date().getTime();
+        //for local storage
+        let tempList = taskList;
+        
+        tempList.push({
+            projectName,
+            taskDescription,
+            timeStamp:timeStamp,
+            duration:0
+        })
+        localStorage.setItem("taskList",JSON.stringify(tempList))
+        window.location.reload();
+        
+        // setTaskList([...taskList, { projectName, taskDescription,timeStamp:timeStamp }]);
         setAddModel(false); // -- Close the modal after adding
         setProjectName("");   // --  Clear the input fields
         setTaskDescription("");
         }
+
     };
 
     return (
