@@ -20,18 +20,31 @@ const Edit= ({ task , index , taskList, setTaskList}) => {
         if (name === "taskDescription") setTaskDescription(value);
     };
 
-    const handleUpdate = (e) => {
-        e.preventDefault();
+    // const handleUpdate = (e) => {
+    //     e.preventDefault();
         
-        // Update taskList by mapping through it and updating the specified task
-        const updatedTaskList = taskList.map((item, i) => 
-            i === index ? { projectName, taskDescription } : item
-        );
-    
-        setTaskList(updatedTaskList);
-        setEditModel(false); // Close the modal after updating
-        setProjectName(""); // Clear the input fields
-        setTaskDescription("");
+    //     // Update taskList by mapping through it and updating the specified task
+    //     const updatedTaskList = taskList.map((item, i) => 
+    //         i === index ? { projectName, taskDescription } : item
+    //     );
+        
+    //     setTaskList(updatedTaskList);
+    //     setEditModel(false); // Close the modal after updating
+    //     setProjectName(""); // Clear the input fields
+    //     setTaskDescription("");
+    // };
+    const handleUpdate = e => {
+        e.preventDefault();
+        let taskIndex = taskList.indexOf(task);
+        taskList.splice(taskIndex, 1, {
+            projectName: projectName,
+            taskDescription: taskDescription,
+            timestamp: task.timestamp,
+            duration: task.duration
+        });
+        localStorage.setItem("taskList", JSON.stringify(taskList));
+        window.location.reload();
+        setEditModel(false);
     };
     
 
